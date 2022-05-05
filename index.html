@@ -101,10 +101,28 @@
           /*  ++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
 
           /* PUT ANY CHANGES TO THE JAVASCRIPT HERE  */
-          
-          
-          
-          
+         
+          // var x and y sets the starting points for the image drawing on canvas 2
+        var x = 0;
+        var y = 0;
+         
+         //this method creates a variable that will store the details of the image in canvas 1, including starting coordinate and dimensions
+        var imageData = context.getImageData(x, y, img.width, img.height);
+         
+        //this initializes a variable "data" to store all the info collected about the image in the previous method
+        var data = imageData.data;
+         
+         // this for loop iterates through every pixel and sets the red and green pixel values to zero, leaving only blue values of each pixel
+        for(var i = 0; i < data.length; i += 4) {
+          // red
+          data[i] = 0;
+          // green
+          data[i + 1] = 0;
+        }
+        
+        // this method draws the blue-only pixels onto canvas 2
+        context2.putImageData(imageData, x, y);
+         
         } // end of img.onload
         
         img.src = reader.result;
@@ -133,7 +151,8 @@
         <input type="file" id="fileInput" STYLE="background-color: #FF6600;">
       </div>
       <div id="messageDisplayArea"></div>
-      
+     
+      <!-- this is the first canvas, which displays the original image -->
       <canvas id="myCanvas" width=600 height=500 style="border:1px solid #d3d3d3;"></canvas>
       <script> /* This script initiates the cavas and puts the text on the canvas "myCanvas" */
         var canvas = document.getElementById('myCanvas');
