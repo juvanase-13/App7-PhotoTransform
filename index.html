@@ -102,18 +102,18 @@
 
           /* PUT ANY CHANGES TO THE JAVASCRIPT HERE  */
          
-          var secondCanvas = document.getElementById('secondCanvas'); //this is the code for the second canvas
-         var secondContext = secondCanvas.getContext("2d"); //this is the context for the second canvas
-         var imageData= context.getImageData(0,0,600,500); //this gets the context for the image
-         var data = imageData.data; //this gets the pixel data of the canvas
+          var secondCanvas = document.getElementById('secondCanvas'); //second canvas
+         var secondContext = secondCanvas.getContext("2d"); //context for second canvas
+         var imageData= context.getImageData(0,0,600,500); //context for image
+         var data = imageData.data; //gets pixel data of canvas
          
-         //this code changes the image to blue
+         //this code changes image to blue
          for(var i = 0, n = data.length; i < n; i += 4){
-            data[i] = 0; //this sets the red insensity to 0 (red will not show)
-            data[i + 1] = 0; //this sets the green intensity to 0 (green will not show)
+            data[i] = 0; //red insensity to 0 (no red is displayed)
+            data[i + 1] = 0; //green intensity to 0 (no green is displayed)
         }
           
-         secondContext.putImageData(imageData,0,0); //this will apply all functions to the second canvas
+         secondContext.putImageData(imageData,0,0); //apply all functions to second canvas
        
          
         } // end of img.onload
@@ -122,10 +122,10 @@
       } //  end of reader.onload
       
       reader.readAsDataURL(file);
-    } // end of the if statement checking that file is an image
+    } // end of if statement to check that file is an image
     else
     {
-      // this is what happens if the orignial file selected is not an image file
+      // if the orignial file selected is not an image file then...
       messageDisplayArea.innerHTML = "File not supported!"
     } // end of the else statement if file in NOT an image
   }); // end of the fileInput.addEventListener function
@@ -150,14 +150,14 @@
      
       <canvas id="myCanvas" width=600 height=500 style="border:1px solid #d3d3d3;"></canvas> <!--size of canvas-->
       <script> /* This script initiates the cavas and puts the text on the canvas "myCanvas" */
-        var canvas = document.getElementById('myCanvas'); //calls the canvas
-        var context = canvas.getContext("2d"); //gives the context for the canvas
-        context.font = '20pt Calibri'; //size and font that will appear
+        var canvas = document.getElementById('myCanvas'); //calls canvas
+        var context = canvas.getContext("2d"); //gives context for canvas
+        context.font = '20pt Calibri'; //size and font that appear
         context.fillStyle = "black"; //color of the font
-        context.fillText("Original image will go here", 10, 20); //oordinates of the image
+        context.fillText("Original image will go here", 10, 20); //coordinates of the image
       </script>
       
-      <!--this is the new code for the second canvas-->
+      <!--new code for second canvas-->
       <canvas id="secondCanvas" width=600 height=500 style="border:1px solid #d3d3d3;"></canvas>
       <script> 
         var secondCanvas = document.getElementById('secondCanvas');
